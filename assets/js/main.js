@@ -215,30 +215,38 @@ $(document).ready(function(){
 	// Omit this part if you don't have more content
 	// *************************** //
 	
-	// If the user has not selected a theme, then select the default one according to the user's preferences
-	if(localStorage.getItem("theme") === null){
-		localStorage.theme = "light";
-		if (window.matchMedia('(prefers-color-scheme: dark)').matches)
-			localStorage.theme = "dark";
-	}
+	// // If the user has not selected a theme, then select the default one according to the user's preferences
+	// if(localStorage.getItem("theme") === null){
+	// 	localStorage.theme = "light";
+	// 	if (window.matchMedia('(prefers-color-scheme: dark)').matches)
+	// 		localStorage.theme = "dark";
+	// }
 
-	// Always load the light theme
+	// // Always load the light theme
+	// $('<link>').appendTo('head').attr({
+	// 	type: 'text/css', 
+	// 	rel: 'stylesheet',
+	// 	href: 'assets/css/light.css'
+	// });
+
+	// // If the user has the dark theme, then replace the light theme with the dark one
+	// if (localStorage.theme == "dark") {
+	// 	$("link[href='assets/css/light.css']").remove();
+	// 	$('<link>').appendTo('head').attr({
+	// 		type: 'text/css', 
+	// 		rel: 'stylesheet',
+	// 		href: 'assets/css/dark.css'
+	// 	});
+	// 	$('#theme').empty().append("<i class='fa-duotone fa-lightbulb-slash'></i>");
+	// }
+
+	localStorage.theme = "dark";
+	$("link[href='assets/css/light.css']").remove();
 	$('<link>').appendTo('head').attr({
-		type: 'text/css', 
-		rel: 'stylesheet',
-		href: 'assets/css/light.css'
+    type: 'text/css',
+    rel: 'stylesheet',
+    href: 'assets/css/dark.css'
 	});
-
-	// If the user has the dark theme, then replace the light theme with the dark one
-	if (localStorage.theme == "dark") {
-		$("link[href='assets/css/light.css']").remove();
-		$('<link>').appendTo('head').attr({
-			type: 'text/css', 
-			rel: 'stylesheet',
-			href: 'assets/css/dark.css'
-		});
-		$('#theme').empty().append("<i class='fa-duotone fa-lightbulb-slash'></i>");
-	}
 
 	// Controls the option menu toggler to show/hide the language and theme selectors
 	$('#options-toggler').click(function(e) {
